@@ -45,16 +45,17 @@ section > * + *, .text > * + * { margin-top: var(--kora-stack); }
 .lang a[aria-current] { color: var(--kora-text); }
 
 .hero, .center, .contact { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.center { justify-content: center; }
+.hero, .center { justify-content: center; }
 
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--kora-s12); align-items: center; }
 .split > * { margin-top: 0; }
 .flip > :first-child { order: 2; }
 .split > img { justify-self: center; max-height: 70vh; width: auto; border-radius: var(--kora-radius); }
-/* First screen: the clip under the header and the headline below it, both above the fold.
-   Clip height = screen - header and gaps (10.5rem) - two lines of the display title; at least 45svh. */
-.hero { padding-top: var(--kora-s2); }
-.clip { position: relative; width: min(100%, max(45svh, 100svh - 10.5rem - 2.1 * var(--kora-fs-display)) * 1280 / 732); }
+/* Stratus clip: a wider column keeps the product large. */
+.wide { grid-template-columns: 3fr 2fr; }
+.clip { position: relative; }
+.spec { color: var(--kora-text); }
+.spec span { white-space: nowrap; }
 .clip video { display: block; width: 100%; height: auto; border-radius: var(--kora-radius); }
 .pause {
   position: absolute; right: var(--kora-s2); bottom: var(--kora-s2); padding: var(--kora-s1) var(--kora-s2);
@@ -88,7 +89,7 @@ footer a:is(:hover, :focus-visible) { color: var(--kora-green); }
 
 @media (min-width: 761px) {
   /* About 80vh; keeps the next headline below the fold of a section-aligned screen at any height. */
-  .split, .center { min-height: calc(100vh - var(--kora-section)); }
+  .hero, .split, .center { min-height: calc(100vh - var(--kora-section)); }
 }
 @media (max-width: 760px) {
   .split { grid-template-columns: 1fr; gap: var(--kora-s8); }

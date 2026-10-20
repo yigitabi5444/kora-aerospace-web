@@ -22,7 +22,6 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/media/takeoff-poster.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="/tokens.css">
   <link rel="stylesheet" href="/styles.css">
 </head>
@@ -37,28 +36,28 @@
 
   <main>
     <section class="wrap hero">
-      <figure class="clip">
-        <video autoplay muted loop playsinline poster="/media/takeoff-poster.webp" width="1280" height="732" aria-label="Stratus bir deneme uçuşunda dikey kalkıyor">
-          <source src="/media/takeoff-1280.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference) and (min-width: 761px)">
-          <source src="/media/takeoff-720.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
-        </video>
-        <button type="button" class="label pause" data-pause="Durdur" data-play="Oynat" hidden>Durdur</button>
-      </figure>
       <h1>Mikro İHA çözümleri geliştiriyoruz.</h1>
       <p class="lead">Mikro İHA'larda uzmanız ve işinizin gerektirdiği İHA'yı yapıyoruz.</p>
       <p class="actions"><a href="#contact">Bize ulaşın</a></p>
     </section>
 
-    <section class="wrap split" id="work">
-      <img src="/media/stratus-hover.webp" alt="Stratus, kuyruğu üzerinde duran beyaz bir tailsitter İHA, deneme sahasında" width="1100" height="825" loading="lazy" decoding="async">
+    <section class="wrap split wide" id="work">
+      <figure class="clip">
+        <video muted loop playsinline preload="none" poster="/media/takeoff-poster.webp" width="1280" height="732" aria-label="Stratus bir deneme uçuşunda dikey kalkıyor">
+          <source src="/media/takeoff-1280.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference) and (min-width: 761px)">
+          <source src="/media/takeoff-720.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
+        </video>
+        <button type="button" class="label pause" data-pause="Durdur" data-play="Oynat" hidden>Durdur</button>
+      </figure>
       <div class="text">
         <p class="label">Neler yaptık</p>
         <h2>Stratus</h2>
         <p class="lead">Stratus referans platformumuz: bir mikro VTOL tailsitter.</p>
+        <p class="label spec"><span>1,4 kg</span> · <span>500 g faydalı yük</span> · <span>40 dk uçuş süresi</span> · <span>28 km operasyonel menzil</span> · <span>Gömülü yapay zeka bilgisayarı</span></p>
         <ul class="features">
           <li>Dikey kalkar ve iner, kanatla seyreder</li>
           <li>Çantaya sığar</li>
-          <li>Kusurları uçuş sırasında gömülü yapay zekayla bulur</li>
+          <li>Kusurları uçuş sırasında bulur</li>
           <li>İşin gerektirdiği faydalı yükü taşır</li>
         </ul>
       </div>
@@ -116,12 +115,18 @@
   </footer>
 
   <script>
-    // Pause control for the looping clip (WCAG 2.2.2). It shows only once the clip plays,
-    // so visitors with reduced motion (no matching source) never see it.
+    // The Stratus clip plays (muted, looped) while it is on screen, so it costs nothing until then.
+    // With reduced motion no <source> matches: it never plays and the pause button stays hidden.
+    // The pause button meets WCAG 2.2.2; a clip the visitor paused stays paused.
     const clip = document.querySelector('.clip video'), pause = clip.nextElementSibling;
+    let paused = false;
     clip.addEventListener('playing', () => { pause.hidden = false; pause.textContent = pause.dataset.pause || 'Pause'; });
     clip.addEventListener('pause', () => { pause.textContent = pause.dataset.play || 'Play'; });
-    pause.addEventListener('click', () => clip.paused ? clip.play() : clip.pause());
+    pause.addEventListener('click', () => { paused = !clip.paused; paused ? clip.pause() : clip.play(); });
+    new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) clip.pause();
+      else if (!paused && clip.currentSrc) clip.play().catch(() => {});
+    }, { threshold: 0.5 }).observe(clip);
   </script>
 </body>
 </html>
