@@ -32,8 +32,8 @@ footer { font-size: var(--kora-fs-small); color: var(--kora-text-muted); }
 .wrap { max-width: calc(var(--kora-max) + 2 * var(--kora-gutter)); margin-inline: auto; padding-inline: var(--kora-gutter); }
 section { padding-block: var(--kora-section); }
 section > * + *, .text > * + * { margin-top: var(--kora-stack); }
-.text > .label + h2 { margin-top: var(--kora-s2); }
-.actions, .links, .features, .layers { margin-top: var(--kora-s6); }
+.label + h2 { margin-top: var(--kora-s2); }
+.actions, .contacts, .features, .layers { margin-top: var(--kora-s6); }
 
 .top { display: flex; align-items: center; justify-content: space-between; padding-block: var(--kora-s3); }
 /* Wraps below the logo only on very narrow screens, so no item is ever cut off. */
@@ -76,12 +76,18 @@ section > * + *, .text > * + * { margin-top: var(--kora-stack); }
 .features li:last-child { border-bottom: 1px solid var(--kora-line); }
 
 .layers { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--kora-s4) var(--kora-s6); }
-.layers li { display: flex; align-items: center; gap: var(--kora-s2); font-weight: 500; }
+.layers li { display: flex; align-items: center; gap: var(--kora-s2); font-weight: 500; text-align: left; }
+/* In-house section: the layers in one row, icons in white so the section stands out. */
+.inhouse .layers { grid-template-columns: repeat(4, auto); justify-content: center; gap: var(--kora-s4) var(--kora-s8); }
+.inhouse .icon { stroke: var(--kora-text); }
 .icon { flex: none; width: 24px; height: 24px; fill: none; stroke: var(--kora-text-muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
-.links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--kora-s3) var(--kora-s6); }
-.actions a, .links a:not(.btn) { text-decoration-color: var(--kora-text-muted); text-underline-offset: 4px; }
-.actions a:is(:hover, :focus-visible), .links a:not(.btn):is(:hover, :focus-visible) { color: var(--kora-green); }
+/* Contact: each link says what it does (mail or site) under a small label. */
+.contact .note { margin-top: var(--kora-s2); }
+.contacts { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--kora-s4) var(--kora-s12); }
+.contacts li { display: flex; flex-direction: column; align-items: center; gap: var(--kora-s1); }
+.actions a:not(.btn), .contacts a { text-decoration-color: var(--kora-text-muted); text-underline-offset: 4px; }
+.actions a:not(.btn):is(:hover, :focus-visible), .contacts a:is(:hover, :focus-visible) { color: var(--kora-green); }
 
 footer { display: flex; flex-wrap: wrap; gap: var(--kora-s1) var(--kora-s4); padding-block: var(--kora-s12) var(--kora-s8); }
 footer a { text-decoration: none; }
@@ -95,5 +101,5 @@ footer a:is(:hover, :focus-visible) { color: var(--kora-green); }
   .split { grid-template-columns: 1fr; gap: var(--kora-s8); }
   .flip > :first-child { order: 0; }
   .split > img { width: 100%; max-height: none; }
-  .layers { gap: var(--kora-s3); }
+  .layers, .inhouse .layers { grid-template-columns: auto auto; gap: var(--kora-s3) var(--kora-s6); }
 }
