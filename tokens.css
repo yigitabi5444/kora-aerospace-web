@@ -1,4 +1,5 @@
-/* Kora Aerospace design tokens. Source of truth: design/DESIGN.md */
+/* Kora Aerospace design tokens v2 (2026-10-20). Rules: design/DESIGN.md.
+   Fonts are self-hosted by each site; this file loads nothing. */
 
 :root {
   /* Color: dark first, from the recruitment poster */
@@ -11,30 +12,37 @@
   --kora-green-dim: #3e8a6c;   /* hover/pressed */
   --kora-on-green: #141414;    /* text on green */
 
-  /* Type */
+  /* Type: big steps between levels, so hierarchy comes from size and weight */
   --kora-font: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --kora-font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --kora-fs-display: clamp(2.5rem, 6vw, 4.5rem);
-  --kora-fs-h1: clamp(2rem, 4vw, 3rem);
-  --kora-fs-h2: 1.5rem;
-  --kora-fs-body: 1rem;
+  --kora-fs-display: clamp(3rem, 8vw, 6rem);       /* 48 to 96px */
+  --kora-fs-h1: clamp(2.25rem, 5vw, 4rem);         /* 36 to 64px */
+  --kora-fs-h2: clamp(1.375rem, 2.2vw, 1.75rem);   /* 22 to 28px */
+  --kora-fs-lead: clamp(1.125rem, 1.8vw, 1.375rem);/* 18 to 22px, under a heading */
+  --kora-fs-body: 1.0625rem;                       /* 17px */
   --kora-fs-small: 0.875rem;
   --kora-fs-label: 0.75rem;    /* mono, uppercase, letter-spacing .12em */
-  --kora-lh: 1.55;
-  --kora-lh-tight: 1.1;
+  --kora-lh: 1.7;
+  --kora-lh-tight: 1.05;
+  --kora-measure: 36ch;        /* max line length of lead and body text */
 
-  /* Space: 8px grid */
-  --kora-s1: 0.5rem;
-  --kora-s2: 1rem;
-  --kora-s3: 1.5rem;
-  --kora-s4: 2rem;
-  --kora-s6: 3rem;
-  --kora-s8: 4rem;
-  --kora-s12: 6rem;            /* between sections */
-  --kora-max: 1120px;          /* content width */
+  /* Space: 8px grid, larger top end */
+  --kora-s1: 0.5rem;           /* 8 */
+  --kora-s2: 1rem;             /* 16 */
+  --kora-s3: 1.5rem;           /* 24 */
+  --kora-s4: 2rem;             /* 32 */
+  --kora-s6: 3rem;             /* 48 */
+  --kora-s8: 4rem;             /* 64 */
+  --kora-s12: 6rem;            /* 96 */
+  --kora-s16: 8rem;            /* 128 */
+  --kora-s20: 10rem;           /* 160 */
+  --kora-gutter: clamp(1.5rem, 6vw, 6rem);         /* page side margin: 24 to 96px */
+  --kora-section: clamp(6rem, 16vh, 10rem);        /* padding above and below each section: 96 to 160px */
+  --kora-stack: var(--kora-s4);                    /* heading to text */
+  --kora-max: 1200px;          /* content width, inside the gutters */
 
   --kora-radius: 4px;
-  --kora-ease: 150ms ease-out;
+  --kora-ease: 300ms cubic-bezier(.2, 0, 0, 1);    /* calm, no bounce */
 }
 
 /* Light surfaces (print, documents): swap only these */
