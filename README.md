@@ -12,8 +12,8 @@ Design language: `design/DESIGN.md` in the monorepo (owner: designer).
 | `tokens.css` | Copy of `design/tokens.css`. Do not edit here. |
 | `styles.css` | Self-hosted `@font-face` rules and the layout. Uses only the `--kora-*` tokens. |
 | `fonts/` | Space Grotesk and JetBrains Mono, woff2, latin and latin-ext. |
-| `media/` | Logo (`design/logos/kora-logo-light.svg`), WebP photos, `og.jpg` link preview. |
-| `favicon.*`, `apple-touch-icon.png` | From `design/logos/kora-icon-*.svg`. |
+| `media/` | Logo (copy of `design/logos/kora-logo-on-dark.svg`), WebP photos, `og.jpg` link preview. |
+| `favicon.*`, `apple-touch-icon.png` | From `design/logos/kora-icon-green.svg` (tab icon) and `kora-icon-on-dark.svg` (touch icon). |
 | `LICENSES/` | Font (SIL OFL 1.1) and icon (Lucide, ISC) licences. |
 
 Run locally:
