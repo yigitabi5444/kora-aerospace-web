@@ -21,7 +21,7 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 h1, h2, h3 { font-weight: 700; line-height: var(--kora-lh-tight); letter-spacing: -0.02em; text-wrap: balance; }
 
 /* Scale: display, h1, h2, lead, body, small, label. */
-h1 { font-size: var(--kora-fs-display); color: var(--kora-green); }
+h1 { font-size: var(--kora-fs-display); }
 h2 { font-size: var(--kora-fs-h1); }
 h3 { font-size: var(--kora-fs-h2); }
 .lead { font-size: var(--kora-fs-lead); color: var(--kora-text-muted); max-width: var(--kora-measure); }
@@ -40,7 +40,9 @@ section > * + *, .text > * + * { margin-top: var(--kora-stack); }
 .top { flex-wrap: wrap; gap: var(--kora-s2); }
 .top nav { display: flex; gap: var(--kora-s6); font-size: var(--kora-fs-small); }
 .top a { text-decoration: none; }
-.top nav a:hover { color: var(--kora-green); }
+.top nav a:is(:hover, :focus-visible) { color: var(--kora-green); }
+.lang, .lang a { color: var(--kora-text-muted); }
+.lang a[aria-current] { color: var(--kora-text); }
 
 .hero, .center, .contact { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .hero, .center { justify-content: center; }
@@ -49,14 +51,23 @@ section > * + *, .text > * + * { margin-top: var(--kora-stack); }
 .split > * { margin-top: 0; }
 .flip > :first-child { order: 2; }
 .split > img { justify-self: center; max-height: 70vh; width: auto; border-radius: var(--kora-radius); }
-/* The render's background is --kora-bg; fade only the cut edge of its floor. */
-.render { mask-image: linear-gradient(#000 85%, transparent); }
+/* First screen: the takeoff clip under the header, as large as fits above the fold. */
+.intro { padding-block: var(--kora-s2) 0; }
+.clip { position: relative; margin-inline: auto; width: min(100%, calc((100vh - 12rem) * 1280 / 732)); }
+.clip video { display: block; width: 100%; height: auto; border-radius: var(--kora-radius); }
+.pause {
+  position: absolute; right: var(--kora-s2); bottom: var(--kora-s2); padding: var(--kora-s1) var(--kora-s2);
+  border: 0; border-radius: var(--kora-radius); cursor: pointer;
+  background: color-mix(in srgb, var(--kora-bg) 60%, transparent); color: var(--kora-text);
+}
+.pause:is(:hover, :focus-visible) { color: var(--kora-green); }
 
 .btn {
   display: inline-block; padding: var(--kora-s2) var(--kora-s4); border-radius: var(--kora-radius);
   background: var(--kora-green); color: var(--kora-on-green); font-weight: 700; text-decoration: none;
 }
-.btn:hover { background: var(--kora-green-dim); }
+.btn:is(:hover, :focus-visible) { background: var(--kora-green-dim); }
+:focus-visible { outline: 2px solid var(--kora-green); outline-offset: 4px; }
 
 .features { list-style: none; padding: 0; max-width: var(--kora-measure); }
 .features li { padding-block: var(--kora-s2); border-top: 1px solid var(--kora-line); }
@@ -64,15 +75,15 @@ section > * + *, .text > * + * { margin-top: var(--kora-stack); }
 
 .layers { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--kora-s4) var(--kora-s6); }
 .layers li { display: flex; align-items: center; gap: var(--kora-s2); font-weight: 500; }
-.icon { flex: none; width: 24px; height: 24px; fill: none; stroke: var(--kora-green); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.icon { flex: none; width: 24px; height: 24px; fill: none; stroke: var(--kora-text-muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
 .links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--kora-s3) var(--kora-s6); }
-.links a:not(.btn) { text-decoration-color: var(--kora-green); text-underline-offset: 4px; }
-.links a:not(.btn):hover { color: var(--kora-green); }
+.actions a, .links a:not(.btn) { text-decoration-color: var(--kora-text-muted); text-underline-offset: 4px; }
+.actions a:is(:hover, :focus-visible), .links a:not(.btn):is(:hover, :focus-visible) { color: var(--kora-green); }
 
 footer { display: flex; flex-wrap: wrap; gap: var(--kora-s1) var(--kora-s4); padding-block: var(--kora-s12) var(--kora-s8); }
 footer a { text-decoration: none; }
-footer a:hover { color: var(--kora-green); }
+footer a:is(:hover, :focus-visible) { color: var(--kora-green); }
 
 @media (min-width: 761px) {
   /* About 80vh; keeps the next headline below the fold of a section-aligned screen at any height. */

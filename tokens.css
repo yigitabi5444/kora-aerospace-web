@@ -1,4 +1,4 @@
-/* Kora Aerospace design tokens v2 (2026-10-20). Rules: design/DESIGN.md.
+/* Kora Aerospace design tokens v3 (2026-10-20). Rules: design/DESIGN.md.
    Fonts are self-hosted by each site; this file loads nothing. */
 
 :root {
@@ -8,7 +8,7 @@
   --kora-line: #2d2d2d;        /* borders, dividers */
   --kora-text: #f5f5f5;        /* primary text */
   --kora-text-muted: #9a9a9a;  /* secondary text */
-  --kora-green: #5cc098;       /* accent: titles, links, icons. One per view. */
+  --kora-green: #5cc098;       /* small accents only: the main button, link hover/focus. Never headlines. */
   --kora-green-dim: #3e8a6c;   /* hover/pressed */
   --kora-on-green: #141414;    /* text on green */
 

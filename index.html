@@ -4,12 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kora Aerospace | Micro UAV solutions</title>
-  <meta name="description" content="Kora Aerospace develops micro UAV solutions: drones built for your job, the Kora Flight Controller, and software for data analysis and integration.">
+  <meta name="description" content="Kora Aerospace develops micro UAV solutions: drones built for the job, our own flight controller, and software for data analysis and integration.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#141414">
   <link rel="canonical" href="https://www.kora-aerospace.com/">
+  <link rel="alternate" hreflang="en" href="https://www.kora-aerospace.com/">
+  <link rel="alternate" hreflang="tr" href="https://www.kora-aerospace.com/tr/">
+  <link rel="alternate" hreflang="x-default" href="https://www.kora-aerospace.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.kora-aerospace.com/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="tr_TR">
   <meta property="og:title" content="Kora Aerospace">
   <meta property="og:description" content="We specialize in micro drones and build the drone your job needs.">
   <meta property="og:image" content="https://www.kora-aerospace.com/media/og.jpg">
@@ -17,49 +22,62 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/media/takeoff-poster.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="/tokens.css">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header class="wrap top">
     <a href="/"><img src="/media/kora-logo-on-dark.svg" alt="Kora Aerospace" width="120" height="56"></a>
-    <nav><a href="#products">Products</a><a href="#contact">Contact</a></nav>
+    <nav>
+      <a href="#contact">Contact</a>
+      <span class="lang"><a href="/" hreflang="en" aria-current="page">EN</a> · <a href="/tr/" hreflang="tr" lang="tr">TR</a></span>
+    </nav>
   </header>
 
   <main>
+    <section class="wrap intro">
+      <figure class="clip">
+        <video autoplay muted loop playsinline poster="/media/takeoff-poster.webp" width="1280" height="732" aria-label="Stratus takes off vertically on a test flight">
+          <source src="/media/takeoff-1280.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference) and (min-width: 761px)">
+          <source src="/media/takeoff-720.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
+        </video>
+        <button type="button" class="label pause" hidden>Pause</button>
+      </figure>
+    </section>
+
     <section class="wrap hero">
       <h1>We develop micro UAV solutions.</h1>
       <p class="lead">We specialize in micro drones and build the drone your job needs.</p>
-      <p class="actions"><a class="btn" href="#contact">Contact us</a></p>
+      <p class="actions"><a href="#contact">Contact us</a></p>
     </section>
 
-    <section class="wrap split" id="products">
-      <!-- PLACEHOLDER: 433px crop of the poster render, shown at native size; need the source render file -->
-      <img src="/media/render.webp" alt="Stratus micro VTOL tailsitter, standing on its tail" width="433" height="462" class="render">
+    <section class="wrap split" id="work">
+      <img src="/media/stratus-hover.webp" alt="Stratus, a white tailsitter drone, standing on its tail on a test field" width="1100" height="825" loading="lazy" decoding="async">
       <div class="text">
-        <p class="label">Drone</p>
+        <p class="label">What we have built</p>
         <h2>Stratus</h2>
-        <p class="lead">Stratus is our micro VTOL tailsitter for inspection.</p>
+        <p class="lead">Stratus is our reference platform, a micro VTOL tailsitter.</p>
         <ul class="features">
           <li>Takes off and lands vertically, cruises on a wing</li>
           <li>Fits in a briefcase</li>
           <li>Finds defects in flight with on-board AI</li>
-          <li>Carries the payload your job needs</li>
+          <li>Carries the payload the job needs</li>
         </ul>
       </div>
     </section>
 
     <section class="wrap split flip">
-      <img src="/media/board.webp" alt="Kora Flight Controller with an NVIDIA Jetson module mounted" width="1088" height="1552" loading="lazy" decoding="async">
+      <img src="/media/fc-jetson-angle.webp" alt="Kora Flight Controller with an NVIDIA Jetson module and its fan" width="975" height="1300" loading="lazy" decoding="async">
       <div class="text">
-        <p class="label">Avionics</p>
+        <p class="label">What we have built</p>
         <h2>Kora Flight Controller</h2>
         <p class="lead">Our flight controller puts the autopilot and an AI computer on one board.</p>
         <ul class="features">
           <li>Takes an NVIDIA Jetson module</li>
           <li>Fits in a micro UAV</li>
           <li>Processes images in flight without a cloud link</li>
-          <li>Can take another AI module when your job needs it</li>
+          <li>Can take another AI module when the job needs it</li>
         </ul>
       </div>
     </section>
@@ -76,7 +94,7 @@
           <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></svg>Ground software</li>
         </ul>
       </div>
-      <img src="/media/wing.webp" alt="A flying-wing drone built and flown by the Kora team, held by hand in a field" width="1600" height="794" loading="lazy" decoding="async">
+      <img src="/media/wing-field-side.webp" alt="Alpha, a white flying-wing drone built by the Kora team, in a field" width="1100" height="619" loading="lazy" decoding="async">
     </section>
 
     <section class="wrap center">
@@ -86,7 +104,6 @@
 
     <section class="wrap contact" id="contact">
       <h2>Tell us about your job.</h2>
-      <!-- PLACEHOLDER: company mail address -->
       <div class="links">
         <a class="btn" href="mailto:kora.aerospace@gmail.com">Contact us</a>
         <a href="mailto:kora.aerospace@gmail.com?subject=Investor%20inquiry">Investors and programs</a>
@@ -98,8 +115,16 @@
   <footer class="wrap">
     <span>© 2026 Kora Aerospace · In the ODTÜ Teknokent pre-incubation program</span>
     <a href="mailto:kora.aerospace@gmail.com">kora.aerospace@gmail.com</a>
-    <!-- PLACEHOLDER: confirm the LinkedIn page exists -->
     <a href="https://www.linkedin.com/company/kora-aerospace">LinkedIn</a>
   </footer>
+
+  <script>
+    // Pause control for the looping clip (WCAG 2.2.2). It shows only once the clip plays,
+    // so visitors with reduced motion (no matching source) never see it.
+    const clip = document.querySelector('.clip video'), pause = clip.nextElementSibling;
+    clip.addEventListener('playing', () => { pause.hidden = false; pause.textContent = pause.dataset.pause || 'Pause'; });
+    clip.addEventListener('pause', () => { pause.textContent = pause.dataset.play || 'Play'; });
+    pause.addEventListener('click', () => clip.paused ? clip.play() : clip.pause());
+  </script>
 </body>
 </html>
